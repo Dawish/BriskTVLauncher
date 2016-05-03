@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/shape_clean_bg"
+    tools:context=".ui.ActivityQuicken">
+
+    <com.danxx.library.widget.WaveLoadingView
+        android:id="@+id/waveLoadingView"
+        android:layout_width="@dimen/d_300dp"
+        android:layout_height="@dimen/d_300dp"
+        app:wlv_borderColor="@color/seekBarBg"
+        app:wlv_borderWidth="3dp"
+        app:wlv_progressValue="40"
+        app:wlv_shapeType="circle"
+        app:wlv_titleBottom=""
+        app:wlv_titleBottomColor="@color/colorPrimary"
+        app:wlv_titleBottomSize="20sp"
+        app:wlv_titleCenter=""
+        app:wlv_titleCenterColor="@color/colorPrimary"
+        app:wlv_titleCenterSize="24sp"
+        app:wlv_titleTop=""
+        app:wlv_titleTopColor="@color/colorPrimary"
+        app:wlv_titleTopSize="@dimen/s_26sp"
+        app:wlv_waveAmplitude="40"
+        android:layout_marginLeft="@dimen/d_30dp"
+        android:layout_marginRight="@dimen/d_30dp"
+        android:layout_marginTop="@dimen/d_40dp"
+        android:layout_marginBottom="@dimen/d_40dp"
+        app:wlv_waveColor="@color/waveViewBg"
+        android:focusable="false"/>
+
+    <Button
+        android:id="@+id/cleanBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_clean_btn_bg"
+        android:text="点击'OK'键加速"
+        android:padding="@dimen/d_8dp"
+        android:textSize="@dimen/s_28sp"
+        android:textColor="@color/white08"/>
+
+</LinearLayout>

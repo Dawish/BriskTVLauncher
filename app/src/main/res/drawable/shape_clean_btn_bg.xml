@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 填充 -->
+    <solid
+        android:color="@color/waveViewBg"/><!-- 填充的颜色 -->
+    <!-- 圆角 -->
+    <corners
+        android:topLeftRadius="0dp"
+        android:topRightRadius="0dp"
+        android:bottomLeftRadius="4dp"
+        android:bottomRightRadius="4dp"/><!-- 设置圆角半径 -->
+    <!-- 描边 -->
+    <!--    <stroke
+            android:width="3dp"
+            android:color="@color/white08"
+            android:dashWidth="10dp" />-->
+
+</shape>

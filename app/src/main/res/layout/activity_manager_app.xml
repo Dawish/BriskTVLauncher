@@ -1,0 +1,127 @@
+<com.danxx.brisktvlauncher.widget.FocusListenerLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/d_14dp"
+    android:focusable="true"
+    android:descendantFocusability="afterDescendants"
+    tools:context="com.danxx.brisktvlauncher.ui.ActivityManagerApp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/d_20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:textSize="@dimen/s_12sp"
+                android:textColor="@color/white08"
+                android:layout_marginLeft="@dimen/d_10dp"
+                android:text="占用45%"/>
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="@dimen/d_120dp"
+                android:layout_height="@dimen/d_3dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:padding="0dp"
+                android:progressDrawable="@drawable/seek_bar"
+                android:thumb="@null" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="@dimen/s_12sp"
+                android:textColor="@color/white08"
+                android:layout_marginRight="@dimen/d_10dp"
+                android:text="剩余:684M"/>
+        </LinearLayout>
+
+        <com.danxx.brisktvlauncher.widget.TitleViewGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d_10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:focusable="true"
+        android:descendantFocusability="afterDescendants">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/deleteBtn"
+                android:layout_width="@dimen/d_120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/d_40dp"
+                android:padding="@dimen/d_4dp"
+                android:layout_marginLeft="@dimen/d_8dp"
+                android:layout_marginRight="@dimen/d_8dp"
+                android:focusable="true"
+                android:background="@drawable/selector_delete_btn">
+                <ImageView
+                    android:id="@+id/imgUninstall"
+                    android:layout_width="@dimen/d_90dp"
+                    android:layout_height="@dimen/d_84dp"
+                    android:focusable="false"
+                    android:src="@drawable/delete_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/s_15sp"
+                    android:textColor="@color/white08"
+                    android:text="批量卸载"/>
+                <TextView
+                    android:id="@+id/tvCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/s_20sp"
+                    android:lines="1"
+                    android:textColor="@color/white08" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvTips"
+                android:layout_width="@dimen/d_120dp"
+                android:layout_height="wrap_content"
+                android:text="Tips:点击'垃圾桶'进入批量卸载模式"
+                android:textSize="@dimen/s_15sp"
+                android:lines="2"
+                android:layout_marginTop="@dimen/d_10dp"
+                android:textColor="@color/white08"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <com.danxx.brisktvlauncher.widget.FocusRecyclerView
+            android:id="@+id/gRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/d_10dp"
+            android:layout_marginLeft="@dimen/d_30dp"
+            android:layout_marginTop="@dimen/d_30dp"
+            android:nextFocusLeft="@id/deleteBtn"
+            android:descendantFocusability="afterDescendants"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical"></com.danxx.brisktvlauncher.widget.FocusRecyclerView>
+    </LinearLayout>
+
+
+</com.danxx.brisktvlauncher.widget.FocusListenerLinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 填充 -->
+    <solid
+        android:color="@color/white04"
+        android:drawable="@drawable/delete_icon"/><!-- 填充的颜色 -->
+
+    <!-- 描边 -->
+    <stroke
+        android:width="3dp"
+        android:color="@color/white08"
+        android:dashWidth="10dp" />
+
+</shape>

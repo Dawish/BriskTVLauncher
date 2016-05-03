@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="itemBg">#33FFFFFF</color>
+    <color name="itemHomeLeft">#66FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white08">#eeFFFFFF</color>
+    <color name="white04">#88FFFFFF</color>
+    <color name="black99">#99000000</color>
+    <color name="blackbb">#bb000000</color>
+    <color name="seekBarBg">#aa8DC251</color>
+    <color name="waveViewBg">#86B950</color>
+</resources>

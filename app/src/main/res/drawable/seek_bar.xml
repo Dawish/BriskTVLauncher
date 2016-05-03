@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@*android:id/background"
+        android:drawable="@color/white08" />
+
+    <item android:id="@*android:id/progress">
+        <scale
+            android:drawable="@color/seekBarBg"
+            android:scaleWidth="100%" />
+    </item>
+</layer-list>

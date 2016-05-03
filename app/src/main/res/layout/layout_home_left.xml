@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:descendantFocusability="afterDescendants"
+    android:layout_marginTop="@dimen/d_10dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="@dimen/d_140dp"
+        android:layout_height="@dimen/d_80dp"
+        android:text="系统设置"
+        android:textSize="@dimen/s_20sp"
+        android:gravity="center"
+        android:focusable="true"
+        android:layout_marginRight="@dimen/d_10dp"
+        android:textColor="@android:color/white"
+        android:onClick="setting"
+        android:background="@drawable/selector_focus_item_home_left"/>
+
+    <TextView
+        android:layout_width="@dimen/d_140dp"
+        android:layout_height="@dimen/d_80dp"
+        android:text="应用管理"
+        android:textSize="@dimen/s_20sp"
+        android:focusable="true"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/d_10dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/d_10dp"
+        android:onClick="managerApp"
+        android:background="@drawable/selector_focus_item_home_left"/>
+
+    <TextView
+        android:layout_width="@dimen/d_140dp"
+        android:layout_height="@dimen/d_80dp"
+        android:text="内存加速"
+        android:textSize="@dimen/s_20sp"
+        android:focusable="true"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/d_10dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/d_10dp"
+        android:onClick="clean"
+        android:background="@drawable/selector_focus_item_home_left"/>
+
+    <TextView
+        android:layout_width="@dimen/d_140dp"
+        android:layout_height="@dimen/d_80dp"
+        android:text="看点资讯"
+        android:textSize="@dimen/s_20sp"
+        android:focusable="true"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/d_10dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/d_10dp"
+        android:onClick="hotSpot"
+        android:background="@drawable/selector_focus_item_home_left"/>
+    <TextView
+        android:layout_width="@dimen/d_140dp"
+        android:layout_height="@dimen/d_80dp"
+        android:text="桌面设置"
+        android:textSize="@dimen/s_20sp"
+        android:focusable="true"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/d_10dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/d_10dp"
+        android:onClick="about"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:background="@drawable/selector_focus_item_home_left"/>
+</LinearLayout>

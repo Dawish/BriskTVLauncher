@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_title"
+    android:layout_width="wrap_content"
+    android:layout_gravity="right"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/title_time_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/d_60dp"
+        android:gravity="left"
+        android:text="14:50:10"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/s_45sp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/d_20dp"
+        android:layout_marginLeft="@dimen/d_8dp"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/home_networkstate"
+        android:layout_width="@dimen/d_40dp"
+        android:layout_height="@dimen/d_60dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:src="@drawable/networkstate_off"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/s_30sp"
+        android:layout_toLeftOf="@id/title_time_hour"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/d_10dp" />
+
+    <com.victor.loading.rotate.RotateLoading
+        android:id="@+id/rotateloading"
+        android:layout_width="@dimen/d_50dp"
+        android:layout_height="@dimen/d_50dp"
+        app:loading_width="@dimen/d_3dp"
+        app:loading_color="#ffffff"
+        android:layout_marginRight="@dimen/d_10dp"
+        android:layout_toLeftOf="@id/home_networkstate"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

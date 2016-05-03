@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/d_160dp"
+    android:layout_height="@dimen/d_110dp"
+    android:background="@drawable/item_foucs_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/d_10dp"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="@dimen/d_100dp"
+        android:layout_height="@dimen/d_100dp"
+        android:layout_gravity="center_horizontal"
+        android:focusable="false"
+        android:scaleType="fitXY"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/d_110dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="@dimen/d_4dp">
+        <TextView
+            android:id="@+id/appName"
+            android:lines="1"
+            android:gravity="left|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:focusable="false"
+            android:layout_below="@id/appIcon"
+            android:textColor="#F8FBFE"
+            android:textSize="@dimen/s_20sp"/>
+        <TextView
+            android:id="@+id/appVersion"
+            android:lines="1"
+            android:gravity="left|center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:focusable="false"
+            android:layout_below="@id/appName"
+            android:textColor="#BBF8FBFE"
+            android:textSize="@dimen/s_18sp"/>
+        <ImageView
+            android:id="@+id/deletePic"
+            android:layout_width="@dimen/d_44dp"
+            android:layout_height="@dimen/d_54dp"
+            android:layout_gravity="right|bottom"
+            android:visibility="gone"
+            android:src="@drawable/delete_icon"/>
+    </LinearLayout>
+
+</LinearLayout>

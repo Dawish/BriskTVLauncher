@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:drawable="@drawable/shape_focus_item_home_left" />
+    <item android:state_focused="false" android:drawable="@drawable/shape_unfocus_item_home_left" />
+    <item android:drawable="@android:color/transparent" />
+</selector>
