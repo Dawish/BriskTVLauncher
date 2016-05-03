@@ -25,7 +25,7 @@
         android:layout_width="@dimen/d_40dp"
         android:layout_height="@dimen/d_60dp"
         android:gravity="center_vertical|center_horizontal"
-        android:src="@drawable/networkstate_off"
+        android:src="@mipmap/networkstate_off"
         android:textColor="#ffffff"
         android:textSize="@dimen/s_30sp"
         android:layout_toLeftOf="@id/title_time_hour"

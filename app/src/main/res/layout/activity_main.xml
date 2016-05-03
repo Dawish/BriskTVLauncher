@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.danxx.brisk.widget.FocusListenerLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.danxx.brisktvlauncher.widget.FocusListenerLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/d_4dp"
     android:paddingTop="@dimen/d_14dp"
     android:background="#1E1E1E"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="tv.danxx.com.brisktvlauncher.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,9 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/d_14dp"
-            android:layout_marginLeft="@dimen/d_30dp"
-            android:src="@drawable/wasu_logo"/>
-        <com.danxx.brisk.widget.TitleViewGroup
+            android:layout_marginLeft="@dimen/d_30dp" />
+        <com.danxx.brisktvlauncher.widget.TitleViewGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
@@ -37,7 +37,7 @@
 
         <include layout="@layout/layout_home_left"></include>
 
-        <com.danxx.brisk.widget.FocusRecyclerView
+        <com.danxx.brisktvlauncher.widget.FocusRecyclerView
             android:id="@+id/appGridView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -46,8 +46,8 @@
             android:layout_marginBottom="@dimen/d_10dp"
             android:scrollbars="vertical"
             android:scrollbarStyle="outsideInset"
-            android:descendantFocusability="afterDescendants"></com.danxx.brisk.widget.FocusRecyclerView>
+            android:descendantFocusability="afterDescendants"></com.danxx.brisktvlauncher.widget.FocusRecyclerView>
     </LinearLayout>
 
 
-</com.danxx.brisk.widget.FocusListenerLinearLayout>
+</com.danxx.brisktvlauncher.widget.FocusListenerLinearLayout>
