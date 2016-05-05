@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/d_14dp"
     android:paddingRight="@dimen/d_4dp"
     android:paddingTop="@dimen/d_14dp"
-    android:background="#1E1E1E"
+    android:background="@color/bgActivity"
     android:orientation="vertical"
     tools:context="tv.danxx.com.brisktvlauncher.MainActivity">
 

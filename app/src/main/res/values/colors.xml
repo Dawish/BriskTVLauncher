@@ -11,5 +11,6 @@
     <color name="black99">#99000000</color>
     <color name="blackbb">#bb000000</color>
     <color name="seekBarBg">#aa8DC251</color>
-    <color name="waveViewBg">#86B950</color>
+    <color name="waveViewBg">#0066CC</color>
+    <color name="bgActivity">#001B35</color>
 </resources>

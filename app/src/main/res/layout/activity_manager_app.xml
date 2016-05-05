@@ -3,7 +3,7 @@
     android:id="@+id/layoutContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1E1E"
+    android:background="@color/bgActivity"
     android:orientation="vertical"
     android:paddingTop="@dimen/d_14dp"
     android:focusable="true"
