@@ -266,4 +266,9 @@ public class ActivityQuicken extends AppCompatActivity {
         handlerThreadHandler.removeCallbacksAndMessages(null);
 
     }
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.activity_up_in, R.anim.activity_up_out);
+    }
 }
