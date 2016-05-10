@@ -87,7 +87,13 @@ public class ReadAllApp {
                 app.setSysApp(true);
             }else{
                 /**如果为系统app就不加入到集合中**/
-                result.add(app);
+                /**
+                 * 屏蔽自己
+                 */
+                String noSeeApk = app.getPackageName();
+                if (!noSeeApk.equals("com.danxx.brisktvlauncher")) {
+                    result.add(app);
+                }
             }
         }
         return result;
