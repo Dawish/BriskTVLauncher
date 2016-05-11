@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.danxx.brisktvlauncher.widget.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_margin="@dimen/d_20dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tabName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:maxLines="1"
+        android:text="标题栏"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"
+        android:textColor="@android:color/white"
+        android:textSize="26sp" />
+
+    <CheckedTextView
+        android:layout_width="8dip"
+        android:layout_height="80dp"
+        android:background="@drawable/checkbox_selector"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="8dp" />
+
+</com.danxx.brisktvlauncher.widget.CheckableRelativeLayout>

@@ -33,38 +33,32 @@ public class FocusRecyclerView extends RecyclerView {
 
     @Override
     public View focusSearch(int direction) {
-        Log.d("danxx", "FRV focusSearch--->");
         return super.focusSearch(direction);
     }
 
     @Override
     public View findFocus() {
-        Log.d("danxx", "FRV findFocus--->");
         LayoutManager lm = getLayoutManager();
         return super.findFocus();
     }
 
     @Override
     public boolean requestFocus(int direction, Rect previouslyFocusedRect) {
-        Log.d("danxx", "FRV requestFocus--->");
         return super.requestFocus(direction, previouslyFocusedRect);
     }
 
     @Override
     public void requestChildFocus(View child, View focused) {
-        Log.d("danxx", "FRV requestChildFocus--->");
         super.requestChildFocus(child, focused);
     }
 
     @Override
     public void smoothScrollToPosition(int position) {
         super.smoothScrollToPosition(position);
-        Log.d("danxx", "FRV smoothScrollToPosition--->");
     }
 
     @Override
     public void smoothScrollBy(int dx, int dy) {
-        Log.d("danxx", "FRV smoothScrollBy--->");
         if(hasFocus()){
             if(dy>0){
                 int mdy = dy + getChildHeight();

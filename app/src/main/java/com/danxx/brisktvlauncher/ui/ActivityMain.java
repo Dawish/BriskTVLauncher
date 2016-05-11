@@ -121,6 +121,7 @@ public class ActivityMain extends BaseActivity {
             if(newView != null){
                 FocusAnimUtils.focusAnim(newView);
             }
+            mOldView = null;
             mOldView = newView;  //4.3以下版本需要自己保存上一次的焦点.
         }
     };

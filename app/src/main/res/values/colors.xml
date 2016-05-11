@@ -9,8 +9,15 @@
     <color name="white08">#eeFFFFFF</color>
     <color name="white04">#88FFFFFF</color>
     <color name="black99">#99000000</color>
+    <color name="black22">#22000000</color>
     <color name="blackbb">#bb000000</color>
     <color name="seekBarBg">#aa8DC251</color>
     <color name="waveViewBg">#0066CC</color>
-    <color name="bgActivity">#001B35</color>
+    <color name="bgActivity">#001C28</color>
+
+    <color name="blue">#1F7899</color>
+    <color name="tra">#00FFFFFF</color>
+
+    <color name="red">#D6124C</color>
+
 </resources>
