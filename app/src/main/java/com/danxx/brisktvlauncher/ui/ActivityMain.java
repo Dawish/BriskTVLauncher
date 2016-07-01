@@ -8,6 +8,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +21,18 @@ import android.widget.TextView;
 import com.danxx.brisktvlauncher.R;
 import com.danxx.brisktvlauncher.adapter.BaseRecyclerViewAdapter;
 import com.danxx.brisktvlauncher.adapter.BaseRecyclerViewHolder;
-import com.danxx.brisktvlauncher.adapter.FocusGridLayoutManager;
 import com.danxx.brisktvlauncher.base.BaseActivity;
 import com.danxx.brisktvlauncher.model.AppBean;
 import com.danxx.brisktvlauncher.utils.FocusAnimUtils;
 import com.danxx.brisktvlauncher.utils.ReadAllApp;
 import com.danxx.brisktvlauncher.widget.FocusListenerLinearLayout;
-import com.danxx.brisktvlauncher.widget.FocusRecyclerView;
 import com.danxx.brisktvlauncher.widget.SpaceItemDecoration;
+import com.open.androidtvwidget.bridge.RecyclerViewBridge;
+import com.open.androidtvwidget.recycle.GridLayoutManagerTV;
+import com.open.androidtvwidget.recycle.OnChildSelectedListener;
+import com.open.androidtvwidget.recycle.RecyclerViewTV;
+import com.open.androidtvwidget.recycle.SpacesItemDecoration;
+import com.open.androidtvwidget.view.MainUpView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,16 +41,20 @@ import java.util.List;
  * 首页
  * created by danxingxi on 2016/4/14
  */
-public class ActivityMain extends BaseActivity {
+public class ActivityMain extends BaseActivity implements View.OnFocusChangeListener{
 
-    private FocusRecyclerView appGridView;
+    private RecyclerViewTV appGridView;
     private List<AppBean> mAppData = new ArrayList<AppBean>();
     private AppGridAdapter mApater;
-    private FocusGridLayoutManager gridLayoutManager;
     private ReadAllApp appRead;
     private FocusListenerLinearLayout focusListenerLinearLayout;
     private AppReceiver appReceiver;
     private View mOldView;
+
+    GridLayoutManagerTV gridlayoutManager;
+    MainUpView mainUpView1;
+    RecyclerViewBridge mRecyclerViewBridge;
+    private View oldView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +64,47 @@ public class ActivityMain extends BaseActivity {
     }
     private void initView(){
         appRead = new ReadAllApp(this);
-        appGridView = (FocusRecyclerView) findViewById(R.id.appGridView);
+        appGridView = (RecyclerViewTV) findViewById(R.id.appGridView);
 
         focusListenerLinearLayout = (FocusListenerLinearLayout) findViewById(R.id.layoutContent);
         focusListenerLinearLayout.setOnFocusSearchListener(focusSearchListener);
-        focusListenerLinearLayout.setOnChildFocusChangeListener(focusChangeListener);
+//        focusListenerLinearLayout.setOnChildFocusChangeListener(focusChangeListener);
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.item_space);
 
         appGridView.addItemDecoration(new SpaceItemDecoration(spacingInPixels));
         appGridView.setItemAnimator(new DefaultItemAnimator());
-        gridLayoutManager = new FocusGridLayoutManager(this , 5);
-        appGridView.setLayoutManager(gridLayoutManager);
-        appGridView.setScrollDy(220);
 
+        gridlayoutManager = new GridLayoutManagerTV(this, 5);
+
+
+        appGridView.setLayoutManager(gridlayoutManager);
+        mainUpView1 = (MainUpView) findViewById(R.id.mainUpView1);
+        mainUpView1.setEffectBridge(new RecyclerViewBridge());
+        //
+        mRecyclerViewBridge = (RecyclerViewBridge) mainUpView1.getEffectBridge();
+        mRecyclerViewBridge.setUpRectResource(R.drawable.border_highlight);
+        mRecyclerViewBridge.setTranDurAnimTime(200);
+        mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
+
+        gridlayoutManager.setOnChildSelectedListener(new OnChildSelectedListener() {
+            @Override
+            public void onChildSelected(RecyclerView parent, View focusview, int position, int dy) {
+                focusview.bringToFront();
+                if(oldView == null){
+                    Log.d("danxx" ,"oldView == null");
+                }
+                mRecyclerViewBridge.setFocusView(focusview, oldView, 1.1f);
+                oldView = focusview;
+            }
+        });
+        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(4,5);
+        gridlayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+        appGridView.setLayoutManager(gridlayoutManager);
+        appGridView.setFocusable(false);
         mApater = new AppGridAdapter(this);
-
+        appGridView.addItemDecoration(spacesItemDecoration);
+        appGridView.setLayoutManager(gridlayoutManager);
         mApater.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, Object data) {
@@ -83,6 +119,7 @@ public class ActivityMain extends BaseActivity {
             public void onItemLongClick(int position, Object data) {
             }
         });
+        initFocus();
         upDateAllApp();
     }
 
@@ -95,6 +132,14 @@ public class ActivityMain extends BaseActivity {
         intentFilter.addAction("android.intent.action.PACKAGE_REMOVED");
         intentFilter.addDataScheme("package");
         registerReceiver(appReceiver, intentFilter);
+    }
+
+    private void initFocus(){
+        findViewById(R.id.setting).setOnFocusChangeListener(this);
+        findViewById(R.id.about).setOnFocusChangeListener(this);
+        findViewById(R.id.managerApp).setOnFocusChangeListener(this);
+        findViewById(R.id.clean).setOnFocusChangeListener(this);
+        findViewById(R.id.hotSpot).setOnFocusChangeListener(this);
     }
 
     /**
@@ -146,6 +191,18 @@ public class ActivityMain extends BaseActivity {
             return res;
         }
     };
+
+    /**
+     * Called when the focus state of a view has changed.
+     *
+     * @param v        The view whose state has changed.
+     * @param hasFocus The new focus state of v.
+     */
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        mRecyclerViewBridge.setFocusView(v, oldView, 1.1f);
+        oldView = v;
+    }
 
     static class AppGridAdapter extends BaseRecyclerViewAdapter <AppBean> {
 
