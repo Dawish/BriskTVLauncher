@@ -16,7 +16,7 @@ import com.danxx.brisktvlauncher.R;
 import com.danxx.brisktvlauncher.model.TaskInfo;
 import com.danxx.brisktvlauncher.model.TaskInfoProvider;
 import com.danxx.brisktvlauncher.utils.Tools;
-import com.danxx.library.widget.WaveLoadingView;
+import com.open.androidtvwidget.view.WaveLoadingView;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

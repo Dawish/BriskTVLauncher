@@ -1,1 +1,1 @@
-include ':app', ':library', ':androidtvwidget'
+include ':app', ':androidtvwidget', ':ijkplayer-java', ':ijkplayer-exo'

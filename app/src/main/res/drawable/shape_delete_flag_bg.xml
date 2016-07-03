@@ -3,7 +3,7 @@
 
     <!-- 填充 -->
     <solid
-        android:color="@color/white04"
+        android:color="@color/white88"
         android:drawable="@drawable/delete_icon"/><!-- 填充的颜色 -->
 
     <!-- 描边 -->

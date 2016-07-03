@@ -1,0 +1,64 @@
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.FullScreenVideoActivity"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:background="@mipmap/setting_bg_wallpaper_12"
+    android:layout_height="match_parent">
+
+    <!-- The main content view -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="@dimen/d_746dp"
+            android:layout_height="@dimen/d_420dp"
+            android:layout_marginTop="@dimen/d_30dp"
+            android:layout_marginBottom="@dimen/d_30dp"
+            android:layout_marginRight="@dimen/d_30dp"
+            android:layout_marginLeft="@dimen/d_60dp"
+            android:foregroundGravity="center"
+            android:padding="@dimen/d_36dp"
+            android:focusable="true"
+            android:background="@mipmap/back">
+            <com.danxx.brisktvlauncher.widget.media.IjkVideoView
+                android:id="@+id/video_view"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"></com.danxx.brisktvlauncher.widget.media.IjkVideoView>
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/toast_text_view"
+            android:layout_width="@dimen/d_660dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:focusable="false"
+            android:layout_marginTop="@dimen/d_480dp"
+            android:layout_marginLeft="@dimen/d_100dp"
+            android:text="温馨提示\n本视频源来自于网络，有可能出现暂时不能播放的情况，请见谅。我们会定期更新视频源，给您一个良好的观看体验！( ^_^ )"
+            android:background="@color/white44"
+            android:padding="16dp"
+            android:textSize="12sp" />
+        <com.open.androidtvwidget.recycle.RecyclerViewTV
+            android:id="@+id/videoList"
+            android:layout_width="@dimen/d_320dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/d_60dp"
+            android:layout_marginTop="@dimen/d_30dp"
+            android:focusable="false"
+            android:clipToPadding="false"
+            android:layout_gravity="right"></com.open.androidtvwidget.recycle.RecyclerViewTV>
+    </FrameLayout>
+    <com.open.androidtvwidget.view.MainUpView
+        android:id="@+id/mainUpView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</android.support.v4.widget.DrawerLayout>

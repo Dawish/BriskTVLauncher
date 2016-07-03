@@ -22,8 +22,11 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view,
                                RecyclerView parent, RecyclerView.State state) {
-
-        int position = parent.getChildPosition(view);
+        outRect.left = space;
+        outRect.bottom = space;
+        outRect.top = space;
+        outRect.right = space;
+ /*       int position = parent.getChildPosition(view);
          if(position%column == 0){  //最左边的item 左间距为0
             outRect.left = 0;
             outRect.bottom = space*3;
@@ -39,6 +42,6 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
              outRect.bottom = space*3;
              outRect.top = space;
              outRect.left = space;
-         }
+         }*/
     }
 }

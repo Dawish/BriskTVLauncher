@@ -10,7 +10,7 @@
     android:background="@drawable/shape_clean_bg"
     tools:context=".ui.ActivityQuicken">
 
-    <com.danxx.library.widget.WaveLoadingView
+    <com.open.androidtvwidget.view.WaveLoadingView
         android:id="@+id/waveLoadingView"
         android:layout_width="@dimen/d_300dp"
         android:layout_height="@dimen/d_300dp"

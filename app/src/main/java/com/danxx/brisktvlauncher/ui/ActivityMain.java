@@ -54,6 +54,7 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
     GridLayoutManagerTV gridlayoutManager;
     MainUpView mainUpView1;
     RecyclerViewBridge mRecyclerViewBridge;
+    SpacesItemDecoration spacesItemDecoration;
     private View oldView;
 
     @Override
@@ -64,6 +65,7 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
     }
     private void initView(){
         appRead = new ReadAllApp(this);
+        mAppData = appRead.getLaunchAppList();
         appGridView = (RecyclerViewTV) findViewById(R.id.appGridView);
 
         focusListenerLinearLayout = (FocusListenerLinearLayout) findViewById(R.id.layoutContent);
@@ -75,9 +77,6 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         appGridView.addItemDecoration(new SpaceItemDecoration(spacingInPixels));
         appGridView.setItemAnimator(new DefaultItemAnimator());
 
-        gridlayoutManager = new GridLayoutManagerTV(this, 5);
-
-
         appGridView.setLayoutManager(gridlayoutManager);
         mainUpView1 = (MainUpView) findViewById(R.id.mainUpView1);
         mainUpView1.setEffectBridge(new RecyclerViewBridge());
@@ -86,20 +85,26 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         mRecyclerViewBridge.setUpRectResource(R.drawable.border_highlight);
         mRecyclerViewBridge.setTranDurAnimTime(200);
         mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
-
+        if(mAppData.size()<=20){
+            gridlayoutManager = new GridLayoutManagerTV(this, 2);
+            spacesItemDecoration = new SpacesItemDecoration(4,2);
+        }else{
+            gridlayoutManager = new GridLayoutManagerTV(this, 3);
+            spacesItemDecoration = new SpacesItemDecoration(4,3);
+        }
         gridlayoutManager.setOnChildSelectedListener(new OnChildSelectedListener() {
             @Override
             public void onChildSelected(RecyclerView parent, View focusview, int position, int dy) {
                 focusview.bringToFront();
-                if(oldView == null){
-                    Log.d("danxx" ,"oldView == null");
+                if (oldView == null) {
+                    Log.d("danxx", "oldView == null");
                 }
                 mRecyclerViewBridge.setFocusView(focusview, oldView, 1.1f);
                 oldView = focusview;
             }
         });
-        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(4,5);
-        gridlayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+
+        gridlayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         appGridView.setLayoutManager(gridlayoutManager);
         appGridView.setFocusable(false);
         mApater = new AppGridAdapter(this);
@@ -146,7 +151,6 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
      *更新显示的app
      */
     private void upDateAllApp(){
-        mAppData = appRead.getLaunchAppList();
 //        List<AppBean> mData =appRead.getLaunchAppList();
 //        for(int i=0;i<mData.size();i++){
 //            mAppData.add(mData.get(i));
@@ -274,13 +278,16 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
     }
 
     public void clean(View view){
+        Log.d("danxx","clean---->");
         Intent intent = new Intent(ActivityMain.this ,ActivityQuicken.class);
         startActivity(intent);
         overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
     }
 
     public void hotSpot(View view){
-
+        Log.d("danxx","hotSpot---->");
+        LiveVideoActivity.intentTo(ActivityMain.this,"","");
+        overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
     }
 
     public void about(View view){

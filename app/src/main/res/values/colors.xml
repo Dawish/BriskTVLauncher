@@ -7,7 +7,8 @@
     <color name="itemHomeLeft">#66FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="white08">#eeFFFFFF</color>
-    <color name="white04">#88FFFFFF</color>
+    <color name="white88">#88FFFFFF</color>
+    <color name="white44">#22FFFFFF</color>
     <color name="black99">#99000000</color>
     <color name="black22">#22000000</color>
     <color name="blackbb">#bb000000</color>
@@ -17,7 +18,25 @@
 
     <color name="blue">#1F7899</color>
     <color name="tra">#00FFFFFF</color>
+    <color name="textColor">#4D4D4D</color>
 
     <color name="red">#D6124C</color>
+    <color name="ijk_color_blue_main">@color/ijk_color_blue_500</color>
+    <color name="ijk_color_blue_50">#E3F2FD</color>
+    <color name="ijk_color_blue_100">#BBDEFB</color>
+    <color name="ijk_color_blue_200">#90CAF9</color>
+    <color name="ijk_color_blue_300">#64B5F6</color>
+    <color name="ijk_color_blue_400">#42A5F5</color>
+    <color name="ijk_color_blue_500">#2196F3</color>
+    <color name="ijk_color_blue_600">#1E88E5</color>
+    <color name="ijk_color_blue_700">#1976D2</color>
+    <color name="ijk_color_blue_800">#1565C0</color>
+    <color name="ijk_color_blue_900">#0D47A1</color>
+
+    <color name="ijk_transparent_dark">#77000000</color>
+    <color name="colorOverlay">#50ffffff</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="dim_foreground_dark">#bebebe</color>
 
 </resources>
