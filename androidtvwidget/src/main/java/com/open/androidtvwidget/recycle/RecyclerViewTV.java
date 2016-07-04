@@ -1,11 +1,12 @@
 package com.open.androidtvwidget.recycle;
 
-import com.open.androidtvwidget.view.WidgetTvViewBring;
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+
+import com.open.androidtvwidget.view.WidgetTvViewBring;
 
 public class RecyclerViewTV extends RecyclerView {
 
@@ -42,6 +43,8 @@ public class RecyclerViewTV extends RecyclerView {
 
 	@Override
 	protected int getChildDrawingOrder(int childCount, int i) {
+		Log.d("danxx" ,"childCount-->"+childCount);
+		Log.d("danxx" ,"i-->"+i);
 		return mWidgetTvViewBring.getChildDrawingOrder(childCount, i);
 	}
 

@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="@dimen/d_140dp"
             android:layout_height="@dimen/d_140dp"
-            android:background="#dd16B757"
+            android:background="#dd135DB8"
             android:text="应用管理"
             android:textSize="@dimen/s_20sp"
             android:focusable="true"
@@ -52,7 +52,7 @@
         <TextView
             android:layout_width="@dimen/d_140dp"
             android:layout_height="@dimen/d_140dp"
-            android:background="#ddFF5021"
+            android:background="#dd135DB8"
             android:text="内存加速"
             android:textSize="@dimen/s_20sp"
             android:focusable="true"
@@ -65,7 +65,7 @@
         <TextView
             android:layout_width="@dimen/d_140dp"
             android:layout_height="@dimen/d_140dp"
-            android:background="#dd16B757"
+            android:background="#dd135DB8"
             android:text="看点资讯"
             android:textSize="@dimen/s_20sp"
             android:focusable="true"

@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -202,14 +203,28 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
                 oldView = focusview;
             }
         });
-        findViewById(R.id.videoContent).setOnFocusChangeListener(this);
+//        findViewById(R.id.videoContent).setOnFocusChangeListener(this);
 
         MyAdapter myAdapter = new MyAdapter();
         myAdapter.setData(datas);
         videoList.setAdapter(myAdapter);
         videoList.setFocusable(false);
         myAdapter.notifyDataSetChanged();
+        myAdapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, Object data) {
+                if(videoList.getVisibility() == View.VISIBLE) {
+                    videoList.setVisibility(View.INVISIBLE);
+                    /**隐藏焦点**/
+                    mRecyclerViewBridge.setVisibleWidget(true);
+                }
+            }
 
+            @Override
+            public void onItemLongClick(int position, Object data) {
+
+            }
+        });
     }
 
     @Override
@@ -218,6 +233,32 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
         finish();
         super.onBackPressed();
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(KeyEvent.KEYCODE_DPAD_CENTER == keyCode || KeyEvent.KEYCODE_ENTER == keyCode){
+            if(videoList.getVisibility() != View.VISIBLE){
+                videoList.setVisibility(View.VISIBLE);
+                mRecyclerViewBridge.setVisibleWidget(false);
+                videoList.requestFocus();
+            }
+        }else if(KeyEvent.KEYCODE_BACK == keyCode){
+            if(videoList.getVisibility() == View.VISIBLE){
+                videoList.setVisibility(View.INVISIBLE);
+                mRecyclerViewBridge.setVisibleWidget(true);
+                return true;
+            }
+        }else if(KeyEvent.KEYCODE_MENU == keyCode){
+            if(videoList.getVisibility() != View.VISIBLE){
+                videoList.setVisibility(View.VISIBLE);
+                videoList.requestFocus();
+                mRecyclerViewBridge.setVisibleWidget(false);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
 
     @Override
     protected void onStop() {
@@ -341,7 +382,7 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
 
         @Override
         protected BaseRecyclerViewHolder createItem(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(LiveVideoActivity.this).inflate(R.layout.item_live,parent,false);
+            View view = LayoutInflater.from(LiveVideoActivity.this).inflate(R.layout.item_live,null);
             MyViewHolder myViewHolder = new MyViewHolder(view);
             return myViewHolder;
         }

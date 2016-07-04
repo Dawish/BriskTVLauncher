@@ -9,7 +9,7 @@
     android:clipToPadding="false"
     tools:context=".ui.FullScreenVideoActivity">
 
-    <FrameLayout
+<!--    <FrameLayout
         android:id="@+id/videoContent"
         android:layout_width="@dimen/d_746dp"
         android:layout_height="@dimen/d_420dp"
@@ -24,14 +24,14 @@
         android:paddingBottom="@dimen/d_36dp"
         android:paddingLeft="@dimen/d_20dp"
         android:paddingRight="@dimen/d_20dp">
-
+    </FrameLayout>-->
         <com.danxx.brisktvlauncher.widget.media.IjkVideoView
             android:id="@+id/video_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:focusable="false"></com.danxx.brisktvlauncher.widget.media.IjkVideoView>
-    </FrameLayout>
+
 
 
     <TextView
@@ -52,14 +52,26 @@
         android:id="@+id/videoList"
         android:layout_width="@dimen/d_320dp"
         android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layout_marginRight="@dimen/d_60dp"
-        android:layout_marginTop="@dimen/d_30dp"
-        android:layout_marginBottom="@dimen/d_30dp"
+        android:layout_gravity="left"
         android:clipToPadding="false"
+        android:paddingLeft="@dimen/d_40dp"
+        android:paddingTop="@dimen/d_40dp"
+        android:paddingRight="@dimen/d_30dp"
+        android:paddingBottom="@dimen/d_40dp"
+        android:background="#000000"
         android:clipChildren="false"
+        android:visibility="invisible"
         android:focusable="false"></com.open.androidtvwidget.recycle.RecyclerViewTV>
-
+    <TextView
+        android:id="@+id/liveName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="香港电影"
+        android:textColor="@color/white"
+        android:focusable="false"
+        android:layout_gravity="top|right"
+        android:layout_margin="@dimen/d_40dp"
+        android:textSize="@dimen/s_30sp"/>
     <com.open.androidtvwidget.view.MainUpView
         android:id="@+id/mainUpView"
         android:layout_width="wrap_content"
