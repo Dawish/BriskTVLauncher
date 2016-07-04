@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/d_10dp"
+    android:focusable="true"
     android:orientation="vertical"
-    android:layout_margin="@dimen/d_20dp" >
+    android:layout_margin="@dimen/d_10dp" >
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"

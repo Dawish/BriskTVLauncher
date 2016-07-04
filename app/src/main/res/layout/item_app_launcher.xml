@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/d_120dp"
-    android:layout_height="@dimen/d_120dp"
+    android:layout_width="@dimen/d_140dp"
+    android:layout_height="@dimen/d_140dp"
     android:background="@color/itemBg"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="@dimen/d_10dp"
+    android:paddingLeft="@dimen/d_20dp"
+    android:paddingRight="@dimen/d_20dp"
+    android:paddingBottom="@dimen/d_10dp"
+    android:paddingTop="@dimen/d_10dp"
     android:focusable="true">
 
     <ImageView

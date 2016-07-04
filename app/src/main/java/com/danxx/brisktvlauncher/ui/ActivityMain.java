@@ -82,7 +82,7 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         mainUpView1.setEffectBridge(new RecyclerViewBridge());
         //
         mRecyclerViewBridge = (RecyclerViewBridge) mainUpView1.getEffectBridge();
-        mRecyclerViewBridge.setUpRectResource(R.drawable.border_highlight);
+        mRecyclerViewBridge.setUpRectResource(R.drawable.item_rectangle);
         mRecyclerViewBridge.setTranDurAnimTime(200);
         mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
         if(mAppData.size()<=20){
@@ -103,7 +103,8 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
                 oldView = focusview;
             }
         });
-
+        SpaceItemDecoration itemDecoration = new SpaceItemDecoration(2);
+        appGridView.addItemDecoration(itemDecoration);
         gridlayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         appGridView.setLayoutManager(gridlayoutManager);
         appGridView.setFocusable(false);

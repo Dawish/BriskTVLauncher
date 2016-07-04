@@ -4,7 +4,7 @@
     android:id="@+id/layoutContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/setting_bg_wallpaper_5"
+    android:background="@mipmap/bg"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="vertical"
@@ -63,7 +63,7 @@
             <com.open.androidtvwidget.recycle.RecyclerViewTV
                 android:id="@+id/appGridView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/d_500dp"
                 android:layout_marginLeft="@dimen/d_8dp"
                 android:layout_marginRight="@dimen/d_20dp"
                 android:clipToPadding="false"

@@ -3,15 +3,12 @@ package com.danxx.brisktvlauncher.ui;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.danxx.brisktvlauncher.R;
-import com.danxx.brisktvlauncher.adapter.BaseAbsListViewAdapter;
 import com.danxx.brisktvlauncher.adapter.BaseRecyclerViewAdapter;
 import com.danxx.brisktvlauncher.adapter.BaseRecyclerViewHolder;
 import com.danxx.brisktvlauncher.model.VideoBean;
@@ -32,8 +27,11 @@ import com.danxx.brisktvlauncher.module.Settings;
 import com.danxx.brisktvlauncher.widget.media.CustomMediaController;
 import com.danxx.brisktvlauncher.widget.media.IjkVideoView;
 import com.danxx.brisktvlauncher.widget.media.MeasureHelper;
+import com.open.androidtvwidget.bridge.RecyclerViewBridge;
 import com.open.androidtvwidget.recycle.LinearLayoutManagerTV;
+import com.open.androidtvwidget.recycle.OnChildSelectedListener;
 import com.open.androidtvwidget.recycle.RecyclerViewTV;
+import com.open.androidtvwidget.view.MainUpView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +42,7 @@ import tv.danmaku.ijk.media.player.misc.ITrackInfo;
 /**
  * 直播播放器
  */
-public class LiveVideoActivity extends AppCompatActivity implements TracksFragment.ITrackHolder {
+public class LiveVideoActivity extends AppCompatActivity implements TracksFragment.ITrackHolder ,View.OnFocusChangeListener {
     private static final String TAG = "LiveVideoActivity";
 
     private String mVideoPath;
@@ -58,6 +56,10 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
 //    private TableLayout mHudView;
 //    private DrawerLayout mDrawerLayout;
     private ViewGroup mRightDrawer;
+
+    private View oldView;
+    MainUpView mainUpView1;
+    RecyclerViewBridge mRecyclerViewBridge;
 
     private Settings mSettings;
     private boolean mBackPressed;
@@ -178,13 +180,36 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
 
     private void initVideoList(){
         videoList = (RecyclerViewTV) findViewById(R.id.videoList);
+
+        mainUpView1 = (MainUpView) findViewById(R.id.mainUpView);
+        mainUpView1.setEffectBridge(new RecyclerViewBridge());
+        mRecyclerViewBridge = (RecyclerViewBridge) mainUpView1.getEffectBridge();
+        mRecyclerViewBridge.setUpRectResource(R.drawable.item_rectangle);
+        mRecyclerViewBridge.setTranDurAnimTime(200);
+        mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
+
         LinearLayoutManagerTV linearLayoutManager = new LinearLayoutManagerTV(LiveVideoActivity.this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        videoList.setLayoutManager(linearLayoutManager);
+        linearLayoutManager.setOnChildSelectedListener(new OnChildSelectedListener() {
+            @Override
+            public void onChildSelected(RecyclerView parent, View focusview, int position, int dy) {
+                focusview.bringToFront();
+                if (oldView == null) {
+                    Log.d("danxx", "oldView == null");
+                }
+                mRecyclerViewBridge.setFocusView(focusview, oldView, 1.1f);
+                oldView = focusview;
+            }
+        });
+        findViewById(R.id.videoContent).setOnFocusChangeListener(this);
+
         MyAdapter myAdapter = new MyAdapter();
         myAdapter.setData(datas);
         videoList.setAdapter(myAdapter);
-        videoList.setLayoutManager(linearLayoutManager);
+        videoList.setFocusable(false);
         myAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -300,11 +325,23 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
         overridePendingTransition(R.anim.activity_up_in, R.anim.activity_up_out);
     }
 
+    /**
+     * Called when the focus state of a view has changed.
+     *
+     * @param v        The view whose state has changed.
+     * @param hasFocus The new focus state of v.
+     */
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        mRecyclerViewBridge.setFocusView(v, oldView, 1.0f);
+        oldView = v;
+    }
+
     class MyAdapter extends BaseRecyclerViewAdapter<VideoBean> {
 
         @Override
         protected BaseRecyclerViewHolder createItem(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(LiveVideoActivity.this).inflate(R.layout.item_live,null);
+            View view = LayoutInflater.from(LiveVideoActivity.this).inflate(R.layout.item_live,parent,false);
             MyViewHolder myViewHolder = new MyViewHolder(view);
             return myViewHolder;
         }
