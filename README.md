@@ -1,23 +1,23 @@
 # BriskTVLauncher
 BriskTVLauncher is a brisk android tv launcher. You can manager app, quicken memory,screen saver and so on.
 
-Ä¿Ç°»¹ÔÚ¿ª·¢½×¶Î£¬ÏÂÃæÊÇÏÖÔÚ¿ª·¢³öÀ´µÄÖ÷ÒªUI:
+ç›®å‰è¿˜åœ¨å¼€å‘é˜¶æ®µï¼Œä¸‹é¢æ˜¯ç°åœ¨å¼€å‘å‡ºæ¥çš„ä¸»è¦UI:
 
-1. Ö÷½çÃæ:
+1. ä¸»ç•Œé¢:
 ![Alt text](./device-2016-07-05-103951.png)
 ![Alt text](./device-2016-07-05-104108.png)
 
-2. Ö±²¥½çÃæ:
+2. ç›´æ’­ç•Œé¢:
 ![Alt text](./device-2016-07-05-104705.png)
 ![Alt text](./device-2016-07-05-104020.png)
 
-3. App¹ÜÀí½çÃæ:
+3. Appç®¡ç†ç•Œé¢:
 ![Alt text](./device-2016-05-03-142547.png)
   
-Ö§³Öµ¥¸öĞ¶ÔØºÍÅúÁ¿Ğ¶ÔØ¡£
+æ”¯æŒå•ä¸ªå¸è½½å’Œæ‰¹é‡å¸è½½ã€‚
 
 
-4. ÄÚ´æ¼ÓËÙ½çÃæ:
-![Alt text](./device-2016-05-03-142618.png)
+4. å†…å­˜åŠ é€Ÿç•Œé¢:
+
 
 
