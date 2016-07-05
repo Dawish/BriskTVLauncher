@@ -146,6 +146,10 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         findViewById(R.id.managerApp).setOnFocusChangeListener(this);
         findViewById(R.id.clean).setOnFocusChangeListener(this);
         findViewById(R.id.hotSpot).setOnFocusChangeListener(this);
+
+        findViewById(R.id.rec_1).setOnFocusChangeListener(this);
+        findViewById(R.id.rec_2).setOnFocusChangeListener(this);
+        findViewById(R.id.rec_3).setOnFocusChangeListener(this);
     }
 
     /**
@@ -287,13 +291,31 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
 
     public void hotSpot(View view){
         Log.d("danxx","hotSpot---->");
-        LiveVideoActivity.intentTo(ActivityMain.this,"","");
+        LiveVideoActivity.intentTo(ActivityMain.this,"","",0);
         overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
     }
 
     public void about(View view){
         Intent intent = new Intent(ActivityMain.this ,ActivitySetting.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
+    }
+
+    public void rec_1(View view){
+        Log.d("danxx","hotSpot---->");
+        LiveVideoActivity.intentTo(ActivityMain.this,"","",8);
+        overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
+    }
+
+    public void rec_2(View view){
+        Log.d("danxx","hotSpot---->");
+        LiveVideoActivity.intentTo(ActivityMain.this,"","",1);
+        overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
+    }
+
+    public void rec_3(View view){
+        Log.d("danxx","hotSpot---->");
+        LiveVideoActivity.intentTo(ActivityMain.this,"","",4);
         overridePendingTransition(R.anim.activity_down_in, R.anim.activity_down_out);
     }
 

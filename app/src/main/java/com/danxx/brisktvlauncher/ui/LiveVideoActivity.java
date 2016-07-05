@@ -1,10 +1,8 @@
 package com.danxx.brisktvlauncher.ui;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -57,8 +55,11 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
 //    private TableLayout mHudView;
 //    private DrawerLayout mDrawerLayout;
     private ViewGroup mRightDrawer;
-
+    private TextView tips,liveName;
+    /**播放指示器**/
+    private int playIndex = 0;
     private View oldView;
+    MyAdapter myAdapter;
     MainUpView mainUpView1;
     RecyclerViewBridge mRecyclerViewBridge;
 
@@ -81,15 +82,16 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
             "http://live.gslb.letv.com/gslb?tag=live&stream_id=lb_erge_720p&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1009&format=C1S&expect=1",
             "http://live.gslb.letv.com/gslb?tag=live&stream_id=lb_livemusic_720p&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1009&format=C1S&expect=1"
     };
-    public static Intent newIntent(Context context, String videoPath, String videoTitle) {
+    public static Intent newIntent(Context context, String videoPath, String videoTitle ,int index) {
         Intent intent = new Intent(context, LiveVideoActivity.class);
         intent.putExtra("videoPath", videoPath);
         intent.putExtra("videoTitle", videoTitle);
+        intent.putExtra("index" ,index);
         return intent;
     }
 
-    public static void intentTo(Context context, String videoPath, String videoTitle) {
-        context.startActivity(newIntent(context, videoPath, videoTitle));
+    public static void intentTo(Context context, String videoPath, String videoTitle ,int index) {
+        context.startActivity(newIntent(context, videoPath, videoTitle,index));
     }
 
     @Override
@@ -102,42 +104,44 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
 
         // handle arguments
         mVideoPath = getIntent().getStringExtra("videoPath");
-        mVideoPath = urls[0];
+        playIndex = getIntent().getIntExtra("index",0);
+        mVideoPath = urls[playIndex];
         Intent intent = getIntent();
         String intentAction = intent.getAction();
-        if (!TextUtils.isEmpty(intentAction)) {
-            if (intentAction.equals(Intent.ACTION_VIEW)) {
-                mVideoPath = intent.getDataString();
-            } else if (intentAction.equals(Intent.ACTION_SEND)) {
-                mVideoUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    String scheme = mVideoUri.getScheme();
-                    if (TextUtils.isEmpty(scheme)) {
-                        Log.e(TAG, "Null unknown ccheme\n");
-                        finish();
-                        return;
-                    }
-                    if (scheme.equals(ContentResolver.SCHEME_ANDROID_RESOURCE)) {
-                        mVideoPath = mVideoUri.getPath();
-                    } else if (scheme.equals(ContentResolver.SCHEME_CONTENT)) {
-                        Log.e(TAG, "Can not resolve content below Android-ICS\n");
-                        finish();
-                        return;
-                    } else {
-                        Log.e(TAG, "Unknown scheme " + scheme + "\n");
-                        finish();
-                        return;
-                    }
-                }
-            }
-        }
+        /**取消对Intent的处理**/
+//        if (!TextUtils.isEmpty(intentAction)) {
+//            if (intentAction.equals(Intent.ACTION_VIEW)) {
+//                mVideoPath = intent.getDataString();
+//            } else if (intentAction.equals(Intent.ACTION_SEND)) {
+//                mVideoUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+//                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+//                    String scheme = mVideoUri.getScheme();
+//                    if (TextUtils.isEmpty(scheme)) {
+//                        Log.e(TAG, "Null unknown ccheme\n");
+//                        finish();
+//                        return;
+//                    }
+//                    if (scheme.equals(ContentResolver.SCHEME_ANDROID_RESOURCE)) {
+//                        mVideoPath = mVideoUri.getPath();
+//                    } else if (scheme.equals(ContentResolver.SCHEME_CONTENT)) {
+//                        Log.e(TAG, "Can not resolve content below Android-ICS\n");
+//                        finish();
+//                        return;
+//                    } else {
+//                        Log.e(TAG, "Unknown scheme " + scheme + "\n");
+//                        finish();
+//                        return;
+//                    }
+//                }
+//            }
+//        }
 
         if (!TextUtils.isEmpty(mVideoPath)) {
             new RecentMediaStorage(this).saveUrlAsync(mVideoPath);
         }
 
-        customMediaController = new CustomMediaController(this, false);
-        customMediaController.setVisibility(View.GONE);
+//        customMediaController = new CustomMediaController(this, false);
+//        customMediaController.setVisibility(View.GONE);
 //        customMediaController.setSupportActionBar(actionBar);
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -150,21 +154,13 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
         // init player
         IjkMediaPlayer.loadLibrariesOnce(null);
         IjkMediaPlayer.native_profileBegin("libijkplayer.so");
-
+        tips = (TextView) findViewById(R.id.tips);
+        liveName = (TextView) findViewById(R.id.liveName);
         mVideoView = (IjkVideoView) findViewById(R.id.video_view);
-        mVideoView.setMediaController(customMediaController);
+//        mVideoView.setMediaController(customMediaController);
 //        mVideoView.setHudView(mHudView);
         // prefer mVideoPath
-        if (mVideoPath != null)
-            mVideoView.setVideoPath(mVideoPath);
-        else if (mVideoUri != null)
-            mVideoView.setVideoURI(mVideoUri);
-        else {
-            Log.e(TAG, "Null Data Source\n");
-            finish();
-            return;
-        }
-        mVideoView.start();
+        playVideo(mVideoPath ,playIndex);
     }
     public void initTiemData()
     {
@@ -205,7 +201,7 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
         });
 //        findViewById(R.id.videoContent).setOnFocusChangeListener(this);
 
-        MyAdapter myAdapter = new MyAdapter();
+        myAdapter = new MyAdapter();
         myAdapter.setData(datas);
         videoList.setAdapter(myAdapter);
         videoList.setFocusable(false);
@@ -213,8 +209,11 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
         myAdapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position, Object data) {
+                String url = ((VideoBean)data).getTvUrl();
+                playVideo(url,position);
                 if(videoList.getVisibility() == View.VISIBLE) {
                     videoList.setVisibility(View.INVISIBLE);
+                    tips.setVisibility(View.VISIBLE);
                     /**隐藏焦点**/
                     mRecyclerViewBridge.setVisibleWidget(true);
                 }
@@ -225,6 +224,26 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
 
             }
         });
+    }
+
+    /**
+     * 播放视频
+     * @param url 直播地址
+     */
+    private void playVideo(String url ,int index){
+        playIndex = index;
+        liveName.setText(myAdapter.getItemData(playIndex).getTvName());
+        if (url != null) {
+            mVideoView.pause();
+            mVideoView.setVideoPath(url);
+        }else if (mVideoUri != null)
+            mVideoView.setVideoURI(mVideoUri);
+        else {
+            Log.e(TAG, "Null Data Source\n");
+            finish();
+            return;
+        }
+        mVideoView.start();
     }
 
     @Override
@@ -239,18 +258,21 @@ public class LiveVideoActivity extends AppCompatActivity implements TracksFragme
         if(KeyEvent.KEYCODE_DPAD_CENTER == keyCode || KeyEvent.KEYCODE_ENTER == keyCode){
             if(videoList.getVisibility() != View.VISIBLE){
                 videoList.setVisibility(View.VISIBLE);
+                tips.setVisibility(View.INVISIBLE);
                 mRecyclerViewBridge.setVisibleWidget(false);
                 videoList.requestFocus();
             }
         }else if(KeyEvent.KEYCODE_BACK == keyCode){
             if(videoList.getVisibility() == View.VISIBLE){
                 videoList.setVisibility(View.INVISIBLE);
+                tips.setVisibility(View.VISIBLE);
                 mRecyclerViewBridge.setVisibleWidget(true);
                 return true;
             }
         }else if(KeyEvent.KEYCODE_MENU == keyCode){
             if(videoList.getVisibility() != View.VISIBLE){
                 videoList.setVisibility(View.VISIBLE);
+                tips.setVisibility(View.INVISIBLE);
                 videoList.requestFocus();
                 mRecyclerViewBridge.setVisibleWidget(false);
             }

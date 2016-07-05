@@ -4,35 +4,37 @@
     android:id="@+id/home_title"
     android:layout_width="wrap_content"
     android:layout_gravity="right"
+    android:gravity="center_vertical"
     android:layout_height="wrap_content">
 
 
     <TextView
         android:id="@+id/title_time_hour"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/d_60dp"
-        android:gravity="left"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
         android:text="14:50:10"
         android:textColor="#ffffff"
-        android:textSize="@dimen/s_45sp"
+        android:textSize="@dimen/s_30sp"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="@dimen/d_20dp"
+        android:layout_marginRight="@dimen/d_30dp"
         android:layout_marginLeft="@dimen/d_8dp"
         android:layout_alignParentRight="true" />
 
     <ImageView
         android:id="@+id/home_networkstate"
-        android:layout_width="@dimen/d_40dp"
-        android:layout_height="@dimen/d_60dp"
+        android:layout_width="@dimen/d_26dp"
+        android:layout_height="@dimen/d_26dp"
         android:gravity="center_vertical|center_horizontal"
         android:src="@mipmap/networkstate_off"
         android:textColor="#ffffff"
+        android:scaleType="fitXY"
         android:textSize="@dimen/s_30sp"
-        android:layout_toLeftOf="@id/title_time_hour"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="@dimen/d_10dp" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/title_time_hour"
+        android:layout_toStartOf="@+id/title_time_hour" />
 
-    <com.victor.loading.rotate.RotateLoading
+<!--    <com.victor.loading.rotate.RotateLoading
         android:id="@+id/rotateloading"
         android:layout_width="@dimen/d_50dp"
         android:layout_height="@dimen/d_50dp"
@@ -40,6 +42,6 @@
         app:loading_color="#ffffff"
         android:layout_marginRight="@dimen/d_10dp"
         android:layout_toLeftOf="@id/home_networkstate"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"/>-->
 
 </RelativeLayout>

@@ -70,8 +70,20 @@
         android:textColor="@color/white"
         android:focusable="false"
         android:layout_gravity="top|right"
-        android:layout_margin="@dimen/d_40dp"
+        android:layout_marginTop="@dimen/d_40dp"
+        android:layout_marginRight="@dimen/d_60dp"
         android:textSize="@dimen/s_30sp"/>
+    <TextView
+        android:id="@+id/tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="按'菜单'键换台"
+        android:textColor="@color/white"
+        android:focusable="false"
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="@dimen/d_30dp"
+        android:layout_marginLeft="@dimen/d_40dp"
+        android:textSize="@dimen/s_18sp"/>
     <com.open.androidtvwidget.view.MainUpView
         android:id="@+id/mainUpView"
         android:layout_width="wrap_content"

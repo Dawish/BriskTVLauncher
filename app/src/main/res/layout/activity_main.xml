@@ -11,27 +11,14 @@
     android:paddingBottom="@dimen/d_14dp"
     android:paddingRight="@dimen/d_4dp"
     android:paddingTop="@dimen/d_14dp"
+    android:paddingLeft="@dimen/d_14dp"
     tools:context="com.danxx.brisktvlauncher.ui.ActivityMain">
 
-    <LinearLayout
+    <com.danxx.brisktvlauncher.widget.TitleViewGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="false"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/d_30dp"
-            android:layout_marginTop="@dimen/d_14dp" />
-
-        <com.danxx.brisktvlauncher.widget.TitleViewGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/d_10dp"
-            android:focusable="false" />
-    </LinearLayout>
+        android:layout_margin="@dimen/d_10dp"
+        android:focusable="false" />
 
     <com.open.androidtvwidget.view.SmoothVorizontalScrollView
         android:layout_width="match_parent"
@@ -58,7 +45,7 @@
                 android:layout_marginLeft="@dimen/d_20dp"
                 android:text="本地应用"
                 android:textColor="@color/white"
-                android:textSize="@dimen/s_28sp" />
+                android:textSize="@dimen/s_30sp" />
 
             <com.open.androidtvwidget.recycle.RecyclerViewTV
                 android:id="@+id/appGridView"
@@ -70,6 +57,51 @@
                 android:focusable="false"
                 android:scrollbarStyle="outsideInset"
                 android:scrollbars="vertical"></com.open.androidtvwidget.recycle.RecyclerViewTV>
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d_20dp"
+                android:text="直播推荐"
+                android:layout_marginTop="@dimen/d_16dp"
+                android:layout_marginBottom="@dimen/d_8dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s_30sp" />
+            <LinearLayout
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/d_22dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/rec_1"
+                    android:focusable="true"
+                    android:layout_width="@dimen/d_240dp"
+                    android:layout_height="@dimen/d_140dp"
+                    android:scaleType="fitXY"
+                    android:onClick="rec_1"
+                    android:src="@mipmap/launcher_channel_children"/>
+                <ImageView
+                    android:id="@+id/rec_2"
+                    android:focusable="true"
+                    android:layout_width="@dimen/d_240dp"
+                    android:layout_height="@dimen/d_140dp"
+                    android:layout_marginLeft="@dimen/d_10dp"
+                    android:scaleType="fitXY"
+                    android:onClick="rec_2"
+                    android:src="@mipmap/launcher_channel_variety"/>
+                <ImageView
+                    android:id="@+id/rec_3"
+                    android:focusable="true"
+                    android:layout_width="@dimen/d_140dp"
+                    android:layout_height="@dimen/d_140dp"
+                    android:layout_marginLeft="@dimen/d_10dp"
+                    android:scaleType="fitXY"
+                    android:onClick="rec_3"
+                    android:src="@mipmap/launcher_channel_movie"/>
+            </LinearLayout>
+
         </LinearLayout>
     </com.open.androidtvwidget.view.SmoothVorizontalScrollView>
     <com.open.androidtvwidget.view.MainUpView

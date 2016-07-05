@@ -29,7 +29,6 @@ import com.danxx.brisktvlauncher.utils.ReadAllApp;
 import com.danxx.brisktvlauncher.widget.FocusListenerLinearLayout;
 import com.danxx.brisktvlauncher.widget.FocusRecyclerView;
 import com.danxx.brisktvlauncher.widget.SpaceItemDecoration;
-import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ import java.util.List;
  * created by danxingxi on 2016/4/19
  */
 public class ActivityManagerApp extends BaseActivity {
-    private RotateLoading rotateLoading;
+//    private RotateLoading rotateLoading;
     private FocusRecyclerView gRecyclerView;
     private FocusGridLayoutManager fgLayoutManager;
     private SpaceItemDecoration itemDecoration;
@@ -61,8 +60,8 @@ public class ActivityManagerApp extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_manager_app);
-        rotateLoading = (RotateLoading) findViewById(R.id.rotateloading);
-        rotateLoading.start();
+//        rotateLoading = (RotateLoading) findViewById(R.id.rotateloading);
+//        rotateLoading.start();
         initView();
     }
 
@@ -136,7 +135,7 @@ public class ActivityManagerApp extends BaseActivity {
         mAdapter.setData(mData);
         Log.d("danxx", "size-->" + mData.size());
         mAdapter.notifyDataSetChanged();
-        rotateLoading.stop();
+//        rotateLoading.stop();
     }
 
     private final FocusListenerLinearLayout.OnChildFocusChangeListener focusChangeListener = new FocusListenerLinearLayout.OnChildFocusChangeListener() {
