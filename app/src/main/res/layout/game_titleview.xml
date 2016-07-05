@@ -24,7 +24,7 @@
     <ImageView
         android:id="@+id/home_networkstate"
         android:layout_width="@dimen/d_26dp"
-        android:layout_height="@dimen/d_26dp"
+        android:layout_height="@dimen/d_22dp"
         android:gravity="center_vertical|center_horizontal"
         android:src="@mipmap/networkstate_off"
         android:textColor="#ffffff"
