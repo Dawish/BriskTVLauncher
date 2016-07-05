@@ -87,10 +87,10 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
         if(mAppData.size()<=20){
             gridlayoutManager = new GridLayoutManagerTV(this, 2);
-            spacesItemDecoration = new SpacesItemDecoration(4,2);
+            spacesItemDecoration = new SpacesItemDecoration(2,2);
         }else{
             gridlayoutManager = new GridLayoutManagerTV(this, 3);
-            spacesItemDecoration = new SpacesItemDecoration(4,3);
+            spacesItemDecoration = new SpacesItemDecoration(2,3);
         }
         gridlayoutManager.setOnChildSelectedListener(new OnChildSelectedListener() {
             @Override
@@ -103,8 +103,6 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
                 oldView = focusview;
             }
         });
-        SpaceItemDecoration itemDecoration = new SpaceItemDecoration(2);
-        appGridView.addItemDecoration(itemDecoration);
         gridlayoutManager.setOrientation(GridLayoutManager.HORIZONTAL);
         appGridView.setLayoutManager(gridlayoutManager);
         appGridView.setFocusable(false);
