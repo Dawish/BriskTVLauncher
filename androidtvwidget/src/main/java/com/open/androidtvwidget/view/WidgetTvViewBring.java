@@ -37,11 +37,22 @@ public class WidgetTvViewBring {
 	 * 这样就避免了使用 bringToFront 导致焦点错乱问题. <br>
 	 */
 	public int getChildDrawingOrder(int childCount, int i) {
-		if (position != -1) {
-			if (i == childCount - 1)
-				return position;
-			if (i == position)
-				return childCount - 1;
+//		if (position != -1) {
+//			if (i == childCount - 1)
+//				return position;
+//			if (i == position)
+//				return childCount - 1;
+//		}
+//		return i;
+		if (position < 0) {
+			return i;
+		}
+		if (i < (childCount - 1)) {
+			if (position == i)
+				i = childCount - 1;
+		} else {
+			if (position < childCount)
+				i = position;
 		}
 		return i;
 	}
