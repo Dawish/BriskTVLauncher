@@ -100,6 +100,7 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
                     Log.d("danxx", "oldView == null");
                 }
                 mRecyclerViewBridge.setFocusView(focusview, oldView, 1.1f);
+                mRecyclerViewBridge.setUnFocusView(oldView);
                 oldView = focusview;
             }
         });
