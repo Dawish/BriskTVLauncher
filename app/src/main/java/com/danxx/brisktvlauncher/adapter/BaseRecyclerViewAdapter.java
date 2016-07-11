@@ -154,7 +154,7 @@ public abstract class BaseRecyclerViewAdapter< T > extends RecyclerView.Adapter<
         if(getItemViewType(position) == TYPE_HEADER) return;
         final int pos = getRealPosition(holder);
         final T data = mData.get(pos);
-        bindData(holder ,position);
+        bindData(holder ,pos);
 
         if(mOnItemClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
