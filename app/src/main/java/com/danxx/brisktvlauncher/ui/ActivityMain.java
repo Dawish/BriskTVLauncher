@@ -83,11 +83,14 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         //
         mRecyclerViewBridge = (RecyclerViewBridge) mainUpView1.getEffectBridge();
         mRecyclerViewBridge.setUpRectResource(R.drawable.item_rectangle);
+        mRecyclerViewBridge.setShadowResource(R.drawable.shadow7);
         mRecyclerViewBridge.setTranDurAnimTime(200);
         mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
         if(mAppData.size()<=20){
             gridlayoutManager = new GridLayoutManagerTV(this, 2);
+            RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.d_400dp));
             spacesItemDecoration = new SpacesItemDecoration(2,2);
+            appGridView.setLayoutParams(params);
         }else{
             gridlayoutManager = new GridLayoutManagerTV(this, 3);
             spacesItemDecoration = new SpacesItemDecoration(2,3);
