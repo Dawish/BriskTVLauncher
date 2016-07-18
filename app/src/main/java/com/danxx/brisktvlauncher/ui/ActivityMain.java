@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.danxx.brisktvlauncher.R;
@@ -88,9 +90,16 @@ public class ActivityMain extends BaseActivity implements View.OnFocusChangeList
         mRecyclerViewBridge.setShadowResource(R.drawable.item_shadow);
         if(mAppData.size()<=20){
             gridlayoutManager = new GridLayoutManagerTV(this, 2);
-            RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.d_400dp));
-            spacesItemDecoration = new SpacesItemDecoration(2,2);
-            appGridView.setLayoutParams(params);
+            if(Build.VERSION.SDK_INT >= 19){
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.d_320dp));
+                spacesItemDecoration = new SpacesItemDecoration(2,2);
+                appGridView.setLayoutParams(params);
+            }else {
+                RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) getResources().getDimension(R.dimen.d_320dp));
+                spacesItemDecoration = new SpacesItemDecoration(2,2);
+                appGridView.setLayoutParams(params);
+            }
+
         }else{
             gridlayoutManager = new GridLayoutManagerTV(this, 3);
             spacesItemDecoration = new SpacesItemDecoration(2,3);
