@@ -90,6 +90,12 @@ public abstract class BaseRecyclerViewAdapter< T > extends RecyclerView.Adapter<
      * @param position 用户点击的itemView的位置
      */
     public void toggleSelection(int position) {
+
+        /**计算正确的位置**/
+        int realPos  = (mHeaderView == null ? position : position - 1);
+
+        position = realPos;
+
         if (selectedItems.get(position, false)) {
             selectedItems.delete(position);
         } else {
@@ -105,7 +111,10 @@ public abstract class BaseRecyclerViewAdapter< T > extends RecyclerView.Adapter<
      * @return true if the item is selected, false otherwise
      */
     public boolean isSelected(int position) {
-        return getSelectedItems().contains(position);
+        /**计算正确的位置**/
+        int realPos  = (mHeaderView == null ? position : position - 1);
+
+        return getSelectedItems().contains(realPos);
     }
 
 
