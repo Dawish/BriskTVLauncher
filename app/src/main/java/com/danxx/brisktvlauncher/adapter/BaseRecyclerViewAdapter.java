@@ -41,9 +41,10 @@ public abstract class BaseRecyclerViewAdapter< T > extends RecyclerView.Adapter<
 
     public T getItemData(int position) {
         T res = null;
-
-        if(position < mData.size()) {
-            res = mData.get(position);
+        /**计算正确的位置**/
+        int realPos  = (mHeaderView == null ? position : position - 1);
+        if(realPos < mData.size()) {
+            res = mData.get(realPos);
         }
 
         return res;
